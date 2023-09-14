@@ -4,6 +4,7 @@ import gql from 'graphql-tag';
 import { useQuery } from '@apollo/client';
 import { client } from '@/components/Apollo/ApolloClient';
 import AuthLayout from '@/components/Layout/Authenticated';
+import Image from 'next/image';
 
 const GET_POKEMON_DETAILS = gql`
   query GetPokemonByDexNumber($number: Int!) {
@@ -62,7 +63,13 @@ const Pokemon = () => {
       <div className="bg-gradient-to-r from-yellow-300 via-red-500 to-blue-500 rounded-lg shadow-lg p-6 mx-auto mt-10 max-w-md mb-14">
         <h1 className="text-4xl font-bold text-center text-white mb-4">{pokemon.species}</h1>
         <div className="flex justify-center">
-          <img src={pokemon.sprite} alt={pokemon.species} className="w-64 h-64 rounded-full border-4 border-white" />
+          <Image
+            src={pokemon.sprite}
+            alt={pokemon.species}
+            width={350}
+            height={350}
+            className="mx-auto"
+          />
         </div>
         <div className="mt-4">
           <p className="text-lg font-semibold text-white">Number: {pokemon.num}</p>

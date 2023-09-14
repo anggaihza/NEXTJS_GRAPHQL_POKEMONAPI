@@ -6,6 +6,7 @@ import AuthLayout from '@/components/Layout/Authenticated';
 import Link from 'next/link';
 import { addUserFavorite } from '@/services/firebase';
 import Swal from 'sweetalert2';
+import Image from 'next/image';
 
 const GET_ALL_POKEMON = gql`
   {
@@ -81,10 +82,12 @@ const Pokemon = () => {
           <div key={index} className="max-w-sm bg-gradient-to-br from-blue-400 via-blue-500 to-blue-600 rounded-lg p-4 m-2 transform hover:scale-105 transition-transform duration-300 ease-in-out">
             <Link href={`/pokemon/${pokemon.num}`}>
               <div className="relative">
-                <img
+                <Image
                   src={pokemon.sprite}
                   alt={pokemon.species}
-                  className="w-32 h-32 mx-auto"
+                  width={150}
+                  height={150}
+                  className="mx-auto"
                 />
                 <div className="absolute top-0 left-0 bg-white p-2 rounded-full">
                   <p className="text-sm text-gray-600">#{pokemon.num}</p>
